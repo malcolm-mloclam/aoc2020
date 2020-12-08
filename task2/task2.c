@@ -140,6 +140,7 @@ int main (int argc, char* argv[]) {
         char** temp = realloc(input, (size + 1) * sizeof(char**));
 
         if (!temp) {
+            free (buffer);
             perror("realloc failed");
             return 1;
         }
@@ -170,6 +171,7 @@ int main (int argc, char* argv[]) {
         int* tempi = realloc(lengths, (size + 1) * sizeof(int));
 
         if (!tempi) {
+            free(buffer);
             perror("realloc failed 2");
             return 1;
         }
@@ -178,6 +180,8 @@ int main (int argc, char* argv[]) {
         *(lengths + size) = lineLength;
 
         size += 1;
+
+        free (buffer);
     }
     
     printf("wrongs1: %d\n", wrongs1);
@@ -186,7 +190,6 @@ int main (int argc, char* argv[]) {
     printf("rights2: %d\n", rights2);
 
     free (lengths);
-    free (buffer);
 
     for (int i = 0; i < size; i++) {
         free(*(input + i));
