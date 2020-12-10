@@ -8,7 +8,7 @@
 
 int main (int argc, char* argv[]) {
     FILE *inputFile = fopen("task5input.txt", "r");
-    char* buffer;
+    char *buffer;
     size_t n;
 
     double row;
